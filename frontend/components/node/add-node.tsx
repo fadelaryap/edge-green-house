@@ -21,7 +21,7 @@ export const AddNode = ({ loadNodes }: { loadNodes: () => void }) => {
   const [errorTimeout, setErrorTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/go/availabledevice')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/go/availabledevice`)
       .then(res => res.json())
       .then((data: Device[]) => setDevices(data));
   }, []);
@@ -62,7 +62,7 @@ export const AddNode = ({ loadNodes }: { loadNodes: () => void }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/api/go/nodes', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/go/nodes`, {
         name,
         devices: selectedDevices.map(device => device.id)
       });

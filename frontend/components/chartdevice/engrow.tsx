@@ -50,7 +50,7 @@ const ChartEngrow: React.FC = () => {
 
   useEffect(() => {
     const fetchDevices = async () => {
-      const response = await fetch('http://localhost:8000/api/go/devices');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/go/devices`);
       const devicesData = await response.json();
       const filteredDevices = devicesData.filter((device: Device) => device.type === 0);
       setDevices(filteredDevices);
@@ -65,7 +65,7 @@ const ChartEngrow: React.FC = () => {
   useEffect(() => {
     if (selectedApiKey) {
       const fetchData = async () => {
-        const response = await fetch(`http://localhost:8000/api/go/chartengrow?apikey=${selectedApiKey}&timeFilter=${timeFilter}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/go/chartengrow?apikey=${selectedApiKey}&timeFilter=${timeFilter}`);
         const result = await response.json();
   
         let formattedData: { [key: number]: DataPoint[] } = {};

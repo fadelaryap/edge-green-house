@@ -21,7 +21,7 @@ const EChartComponent: React.FC = () => {
   useEffect(() => {
     // Fetch data from the API
     const fetchData = async () => {
-      const response = await fetch('http://localhost:8000/api/go/datatest/engrow1');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/go/datatest/engrow1`);
       const data = await response.json();
       setData(data);
     };

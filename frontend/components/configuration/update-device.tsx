@@ -16,7 +16,7 @@ export const UpdateDevice = ({ deviceId, loadDevices }: { deviceId: { id: number
 
   useEffect(() => {
     if (visible) {
-      fetch(`http://localhost:8000/api/go/devices/${deviceId.id}`)
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/go/devices/${deviceId.id}`)
         .then(res => res.json())
         .then(data => {
           setName(data.name);
@@ -58,7 +58,7 @@ export const UpdateDevice = ({ deviceId, loadDevices }: { deviceId: { id: number
     }
 
     try {
-      const response = await axios.put(`http://localhost:8000/api/go/devices/${deviceId.id}`, {
+      const response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/go/devices/${deviceId.id}`, {
         name,
         type: parseInt(selectedType,10), // Menggunakan selectedType
         apikey,

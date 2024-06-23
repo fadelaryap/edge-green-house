@@ -5,7 +5,7 @@ export default function RealTimeComponent() {
 
   // Contoh implementasi pong di klien Next.js
   useEffect(() => {
-    const socket = new WebSocket('ws://192.168.1.2:8000/ws');
+    const socket = new WebSocket('ws://103.196.152.44:8000/ws');
 
 
     return () => {

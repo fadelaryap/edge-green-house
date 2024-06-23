@@ -41,10 +41,10 @@ export const Content = () => {
       const fetchData = async () => {
         try {
           const endpoint = selectedType === 0 
-           ? `http://localhost:8000/api/go/dataengrow/${selectedId}`
+           ? `${process.env.NEXT_PUBLIC_API_URL}/api/go/dataengrow/${selectedId}`
            : selectedType === 1
-           ? `http://localhost:8000/api/go/datanutrigrow/${selectedId}`
-           : `http://localhost:8000/api/go/dataaws/${selectedId}`;
+           ? `${process.env.NEXT_PUBLIC_API_URL}/api/go/datanutrigrow/${selectedId}`
+           : `${process.env.NEXT_PUBLIC_API_URL}/api/go/dataaws/${selectedId}`;
          const response = await fetch(endpoint);
          const data = await response.json();
          console.log(data);
@@ -52,10 +52,10 @@ export const Content = () => {
 
          // Fetch last 10 data points for the selected device
          const last10DataEndpoint = selectedType === 0
-            ? `http://localhost:8000/api/go/dataengrows/last10/${selectedId}`
+            ? `${process.env.NEXT_PUBLIC_API_URL}/api/go/dataengrows/last10/${selectedId}`
             : selectedType === 1
-            ? `http://localhost:8000/api/go/nutrigrows/last10/${selectedId}`
-            : `http://localhost:8000/api/go/dataaws/last10/${selectedId}`;
+            ? `${process.env.NEXT_PUBLIC_API_URL}/api/go/nutrigrows/last10/${selectedId}`
+            : `${process.env.NEXT_PUBLIC_API_URL}/api/go/dataaws/last10/${selectedId}`;
          const last10Response = await fetch(last10DataEndpoint);
          const last10Data = await last10Response.json();
          // console.log(last10Data);
@@ -75,26 +75,26 @@ export const Content = () => {
 
  useEffect(() => {
    if (selectedId && selectedType !== null) {
-     const socket = new WebSocket('ws://localhost:8000/ws');
+     const socket = new WebSocket('ws://103.196.152.44:8000/ws');
 
      socket.onmessage = (event) => {
        if (event.data === selectedId) {
          const fetchData = async () => {
            try {
             const endpoint = selectedType === 0 
-               ? `http://localhost:8000/api/go/dataengrow/${selectedId}`
+               ? `${process.env.NEXT_PUBLIC_API_URL}/api/go/dataengrow/${selectedId}`
                : selectedType === 1
-               ? `http://localhost:8000/api/go/datanutrigrow/${selectedId}`
-               : `http://localhost:8000/api/go/dataaws/${selectedId}`;
+               ? `${process.env.NEXT_PUBLIC_API_URL}/api/go/datanutrigrow/${selectedId}`
+               : `${process.env.NEXT_PUBLIC_API_URL}/api/go/dataaws/${selectedId}`;
              const response = await fetch(endpoint);
              const data = await response.json();
              setDeviceData(data);
 
             const last10DataEndpoint = selectedType === 0
-               ? `http://localhost:8000/api/go/dataengrows/last10/${selectedId}`
+               ? `${process.env.NEXT_PUBLIC_API_URL}/api/go/dataengrows/last10/${selectedId}`
                : selectedType === 1
-               ? `http://localhost:8000/api/go/nutrigrows/last10/${selectedId}`
-               : `http://localhost:8000/api/go/dataaws/last10/${selectedId}`;
+               ? `${process.env.NEXT_PUBLIC_API_URL}/api/go/nutrigrows/last10/${selectedId}`
+               : `${process.env.NEXT_PUBLIC_API_URL}/api/go/dataaws/last10/${selectedId}`;
             const last10Response = await fetch(last10DataEndpoint);
             const last10Data = await last10Response.json();
             // console.log(last10Data);

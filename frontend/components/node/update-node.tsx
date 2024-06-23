@@ -26,7 +26,7 @@ export const UpdateNode = ({ nodeId, loadNodes }: { nodeId: {id: number}, loadNo
 
   useEffect(() => {
     if (visible) {
-      fetch(`http://localhost:8000/api/go/nodes/${nodeId.id}`)
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/go/nodes/${nodeId.id}`)
         .then(res => res.json())
         .then(data => {
           setName(data.name);
@@ -41,7 +41,7 @@ export const UpdateNode = ({ nodeId, loadNodes }: { nodeId: {id: number}, loadNo
           // Handle error if needed
         });
   
-      fetch('http://localhost:8000/api/go/availabledevice')
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/go/availabledevice`)
         .then(res => res.json())
         .then(data => setDevices(data))
         .catch(error => {
@@ -92,7 +92,7 @@ export const UpdateNode = ({ nodeId, loadNodes }: { nodeId: {id: number}, loadNo
     }
 
     try {
-      const response = await axios.put(`http://localhost:8000/api/go/nodes/${nodeId.id}`, {
+      const response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/go/nodes/${nodeId.id}`, {
         name,
         devices: selectedDevices.map(device => ({
           id: device.id,

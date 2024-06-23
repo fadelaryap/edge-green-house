@@ -10,7 +10,7 @@ export const columns = [
 // Fungsi untuk mengambil data dari API
 export const fetchNodes = async () => {
    try {
-      const response = await axios.get('http://localhost:8000/api/go/nodes');
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/go/nodes`);
       const nodesData = response.data;
       
       // Map data pengguna sesuai format yang diperlukan
@@ -32,7 +32,7 @@ export const fetchNodes = async () => {
 
 export const searchNodes = async (query: string) => {
    try {
-       const response = await axios.get(`http://localhost:8000/api/go/search/nodes?q=${query}`);
+       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/go/search/nodes?q=${query}`);
        const nodesData = response.data;
       
       // Map data pengguna sesuai format yang diperlukan
@@ -55,7 +55,7 @@ export const searchNodes = async (query: string) => {
 export const deleteNode = async (id: number) => {
    try {
       console.log(id);
-      await axios.delete(`http://localhost:8000/api/go/nodes/${id}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/go/nodes/${id}`);
       console.log(`User with ID ${id} deleted successfully.`);
       // Optionally, you can remove the user from the local 'nodes' array to update the UI
       // nodes = nodes.filter(node => node.id !== id);

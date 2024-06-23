@@ -39,7 +39,7 @@ export const TableWrapper = () => {
 
     const deleteDevice = async (id: number) => {
         try {
-            await axios.get(`http://localhost:8000/api/go/devices/${id}`);
+            await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/go/devices/${id}`);
             loadDevices();
         } catch (error) {
             console.error('Gagal menghapus device:', error);
@@ -48,7 +48,7 @@ export const TableWrapper = () => {
     
     const exportDevice = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/go/exportdevices', {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/go/exportdevices`, {
                 responseType: 'blob', // Important for handling binary data
             });
     

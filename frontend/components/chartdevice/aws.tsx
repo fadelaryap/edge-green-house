@@ -49,7 +49,7 @@ const ChartAWS: React.FC = () => {
 
   useEffect(() => {
     const fetchDevices = async () => {
-      const response = await fetch('http://localhost:8000/api/go/devices');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/go/devices`);
       const devicesData = await response.json();
       const filteredDevices = devicesData.filter((device: Device) => device.type === 2);
       setDevices(filteredDevices);
@@ -64,7 +64,7 @@ const ChartAWS: React.FC = () => {
   useEffect(() => {
     if (selectedApiKey) {
       const fetchData = async () => {
-        const response = await fetch(`http://localhost:8000/api/go/chartaws?apikey=${selectedApiKey}&timeFilter=${timeFilter}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/go/chartaws?apikey=${selectedApiKey}&timeFilter=${timeFilter}`);
         const result = await response.json();
   
         let formattedData: { [key: number]: DataPoint[] } = {};

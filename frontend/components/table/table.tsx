@@ -46,7 +46,7 @@ export const TableWrapper = () => {
 
     const exportUser = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/go/exportusers', {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/go/exportusers`, {
                 responseType: 'blob', // Important for handling binary data
             });
     

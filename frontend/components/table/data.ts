@@ -11,7 +11,7 @@ export const columns = [
 // Fungsi untuk mengambil data dari API
 export const fetchUsers = async () => {
    try {
-      const response = await axios.get('http://localhost:8000/api/go/users');
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/go/users`);
       const usersData = response.data;
 
       // Map data pengguna sesuai format yang diperlukan
@@ -33,7 +33,7 @@ export const fetchUsers = async () => {
 
 export const searchUsers = async (query: string) => {
    try {
-       const response = await axios.get(`http://localhost:8000/api/go/search/users?q=${query}`);
+       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/go/search/users?q=${query}`);
        const usersData = response.data;
 
       // Map data pengguna sesuai format yang diperlukan
@@ -55,7 +55,7 @@ export const searchUsers = async (query: string) => {
 
 export const deleteUser = async (id: number) => {
    try {
-      await axios.delete(`http://localhost:8000/api/go/users/${id}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/go/users/${id}`);
       console.log(`User with ID ${id} deleted successfully.`);
    } catch (error) {
       console.error('Failed to delete user:', error);

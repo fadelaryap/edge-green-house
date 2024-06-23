@@ -19,7 +19,7 @@ export const AddUser = ({ loadUsers }: { loadUsers: () => void }) => {
 
    const addUserHandler = async () => {
       try {
-         const response = await axios.post('http://localhost:8000/api/go/users', {
+         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/go/users`, {
             firstname,
             lastName,
             email,

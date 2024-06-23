@@ -14,7 +14,7 @@ export const DropdownHome = ({ onSelectionChange }: { onSelectionChange: (apikey
   useEffect(() => {
     const fetchDevices = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/go/devices');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/go/devices`);
         const data = await response.json();
         setDevices(data);
 

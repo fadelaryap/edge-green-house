@@ -11,7 +11,7 @@ export const columns = [
 // Fungsi untuk mengambil data dari API
 export const fetchDevices = async () => {
    try {
-      const response = await axios.get('http://localhost:8000/api/go/devices');
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/go/devices`);
       const devicesData = response.data;
       
       // Map data pengguna sesuai format yang diperlukan
@@ -33,7 +33,7 @@ export const fetchDevices = async () => {
 
 export const searchDevices = async (query: string) => {
    try {
-       const response = await axios.get(`http://localhost:8000/api/go/search/devices?q=${query}`);
+       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/go/search/devices?q=${query}`);
        const devicesData = response.data;
       
       // Map data pengguna sesuai format yang diperlukan
@@ -55,7 +55,7 @@ export const searchDevices = async (query: string) => {
 
 export const deleteDevice = async (id: number) => {
    try {
-      await axios.delete(`http://localhost:8000/api/go/devices/${id}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/go/devices/${id}`);
       console.log(`User with ID ${id} deleted successfully.`);
       // Optionally, you can remove the user from the local 'devices' array to update the UI
       devices = devices.filter(device => device.id !== id);

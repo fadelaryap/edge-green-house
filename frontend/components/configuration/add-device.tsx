@@ -19,7 +19,7 @@ export const AddDevice = ({ loadDevices }: { loadDevices: () => void }) => {
 
    const addDeviceHandler = async () => {
       try {
-         const response = await axios.post('http://localhost:8000/api/go/devices', {
+         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/go/devices`, {
             name,
             type,
             apikey,
