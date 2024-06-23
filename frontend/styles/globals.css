@@ -1,0 +1,19 @@
+html,
+body {
+   padding: 0;
+   margin: 0;
+   font-family: 'Inter', sans-serif;
+}
+
+* {
+   box-sizing: border-box;
+}
+
+.apexcharts-tooltip {
+   background: #f3f3f3;
+   color: rgb(20, 14, 1);
+ }
+ 
+ /* .nextui-c-lesPJm-ilbtsBa-css {
+   background-color: #fff
+ } */
